@@ -11,6 +11,9 @@ if echo "$output" | grep -q "Already up to date."; then
 fi
 echo "Changes Detected on: $(date -R)"
 
+#build the search page
+sh /tmp/repo/main/build
+
 rsync -avh --update /tmp/repo/* /var/www/html
 
 

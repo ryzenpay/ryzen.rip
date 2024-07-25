@@ -1,0 +1,17 @@
+#this is the build command for the search page, this is built into the sync script
+
+#tree -H '.' -L 1 --noreport --dirsfirst -T 'Downloads' -s -D --charset utf-8 -I "search.html" -o search.html
+find . -type d -print -exec sh -c 'tree "$0" \
+    -H "." \
+    -L 1 \
+    --noreport \
+    --houtro ""
+    --dirsfirst \
+    --charset utf-8 \
+    -I "index.html" \
+    -T "Downloads" \
+    --ignore-case \
+    --timefmt "%d-%b-%Y %H:%M" \
+    -s \
+    -D \
+    -o "$0/search.html"' {} \;
