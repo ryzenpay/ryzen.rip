@@ -1,0 +1,15 @@
+eval $('ssh-agent')
+ssh-add /home/kobe/github
+
+cd /tmp/repo
+
+output=$(git clone git@github.com:ryzenpay/ryzen.rip.git /tmp/repo || git pull git@github.com:ryzenpay/ryzen.rip.git)
+if echo "$output" | grep -q "Already up to date."; then
+	exit 0
+fi
+echo "Changes Detected on: $(date -R)"
+
+rsync -avh --update /tmp/repo/* /var/www/html
+
+
+
