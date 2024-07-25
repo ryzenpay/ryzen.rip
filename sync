@@ -1,3 +1,5 @@
+#this is the active sync script ran on the ryzen.rip server
+
 eval $('ssh-agent')
 ssh-add /home/kobe/github
 
