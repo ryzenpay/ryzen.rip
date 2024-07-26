@@ -12,7 +12,7 @@ fi
 echo "Changes Detected on: $(date -R)"
 
 #build the search page
-sh /tmp/repo/main/build
+bash /tmp/repo/main/build
 
 rsync -avh --update /tmp/repo/* /var/www/html
 

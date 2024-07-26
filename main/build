@@ -1,5 +1,4 @@
 #this is the build command for the search page, this is built into the sync script
-cd ../
 root_dir="$PWD"
 tree -H '.' -L 1 --noreport --dirsfirst -T "Downloads" -s -D --charset utf-8 -I "*.html|.*" -o "search.html"
 
