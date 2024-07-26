@@ -3,7 +3,7 @@ cd /tmp/ryzen
 
 find . -type d -not -path "*/.*" | while read dir; do
 	cd "$dir"
-	tree -H '.' -L 1 --noreport --dirsfirst -T "$dir" -s -D --charset utf-8 -I "*.html|.*" -o "search.html"	
+	tree -H '.' -L 1 --noreport --dirsfirst -T "$dir/Downloads" -s -D --charset utf-8 -I "*.html|.*" -o "search.html"	
 	echo "<style> html { color-scheme: light dark; } body { width: 35em; margin: 0 auto; font-family: Tahoma, Verdana, Arial, sans-serif; }</style>" >> search.html
 	cd /tmp/ryzen
 	echo "Search build in: $dir"
