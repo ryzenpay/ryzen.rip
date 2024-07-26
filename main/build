@@ -1,11 +1,12 @@
 #this is the build command for the search page, this is built into the sync script
 cd ../
-create_index_html() {
-    local dir="$1"
-    tree -H '.' -L 1 --noreport --dirsfirst -T "$dir" -s -D --charset utf-8 -I "*.html" -o "$dir/search.html"
-    echo "<style> html { color-scheme: light dark; } body { width: 35em; margin: 0 auto; font-family: Tahoma, Verdana, Arial, sans-serif; }</style>" >> $dir/search.html
-}
+# Create the initial search.html
+tree -H '.' -L 1 --noreport --dirsfirst -T 'Downloads' -s -D --charset utf-8 -I "*.html" -o search.html
 
-export -f create_index_html
-
-find . -type d -exec bash -c 'create_index_html "$0"' {} \;
+# Find all directories and create index.html in each
+find . -type d | while read -r dir; do
+    if [ "$dir" != "." ]; then
+        tree -H '.' -L 1 --noreport --dirsfirst -T "${dir#./}" -s -D --charset utf-8 -I "*.html" -o "$dir/index.html"
+        echo "<style> html { color-scheme: light dark; } body { width: 35em; margin: 0 auto; font-family: Tahoma, Verdana, Arial, sans-serif; }</style>" >> $dir/index.html
+    fi
+done
