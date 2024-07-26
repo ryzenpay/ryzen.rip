@@ -3,18 +3,18 @@
 eval $('ssh-agent')
 ssh-add /home/kobe/github
 
-cd /tmp/repo
+cd /tmp/ryzen
 
-output=$(git clone git@github.com:ryzenpay/ryzen.rip.git /tmp/repo || git pull git@github.com:ryzenpay/ryzen.rip.git)
+output=$(git clone git@github.com:ryzenpay/ryzen.rip.git /tmp/ryzen || git pull git@github.com:ryzenpay/ryzen.rip.git)
 if echo "$output" | grep -q "Already up to date."; then
 	exit 0
 fi
 echo "Changes Detected on: $(date -R)"
 
 #build the search page
-bash /tmp/repo/main/build
+bash /tmp/ryzen/main/build
 
-rsync -avh --update /tmp/repo/* /var/www/html
+rsync -avh --update /tmp/ryzen/* /var/www/html
 
 chmod -R 755 /var/www/html
 
