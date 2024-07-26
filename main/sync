@@ -14,7 +14,9 @@ echo "Changes Detected on: $(date -R)"
 #build the search page
 bash /tmp/ryzen/main/build
 
-rsync -avh --update /tmp/ryzen/* /var/www/html
+rm -r /tmp/ryzen/main
+
+rsync -avh --update --exclude 'main/' /tmp/ryzen/* /var/www/html
 
 chmod -R 755 /var/www/html
 
