@@ -1,11 +1,12 @@
 #this is the build command for the search page, this is built into the sync script
 cd ../
-tree -H '.' -L 1 --noreport --dirsfirst -T "Downloads" -s -D --charset utf-8 -I "*.html" -o "search.html"
+root_dir="$PWD"
+tree -H '.' -L 1 --noreport --dirsfirst -T "Downloads" -s -D --charset utf-8 -I "*.html|.*" -o "search.html"
 
 find . -type d | while read dir; do
 	cd "$dir"
 	tree -H '.' -L 1 --noreport --dirsfirst -T "$dir" -s -D --charset utf-8 -I "*.html" -o "index.html"	
-	cd ../
+	cd "$root_dir"
 done
 
 
