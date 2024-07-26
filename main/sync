@@ -18,4 +18,4 @@ rsync -avh --update /tmp/ryzen/* /var/www/html
 
 chmod -R 755 /var/www/html
 
-
+service nginx reload
