@@ -12,7 +12,7 @@ apt install curl -y
 
 #kubectl server
 echo "installing rancher"
-curl -sfL https://get.k3s.io | INSTALL_K3S_VERSION="v1.24.10+k3s1" sh -s - server --cluster-init 
+curl -sfL https://get.k3s.io | sh -s - server --cluster-init
 #helm
 curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash 
 #cert manager
