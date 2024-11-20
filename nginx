@@ -11,8 +11,11 @@ server {
 
         location / {
                 autoindex on;
-		add_header Content-Type text/plain;
                 try_files $uri $uri/ =404;
         }
 
+    	# Display content for specific file types
+    	location ~* \.(txt|log|conf|sh)$ {
+        	add_header Content-Type text/plain;
+    	}
 }
