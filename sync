@@ -10,7 +10,10 @@ if echo "$output" | grep -q "Already up to date."; then
 fi
 echo "Changes Detected on: $(date -R)"
 
-rsync -avh --update /tmp/repo/* /var/www/html
+sudo rsync -avh --update /tmp/repo/* /var/www/html
+
+sudo chown -R www-data /var/www
 
 sudo chmod -R 755 /var/www/html
 
+sudo systemctl reload nginx
