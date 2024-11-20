@@ -11,6 +11,9 @@ server {
 
         location / {
                 autoindex on;
+		autoindex_localtime on;
+		add_before_body /var/www/html/.theme/header.html;
+		add_after_body /var/www/html/.theme/footer.html;
                 try_files $uri $uri/ =404;
         }
 

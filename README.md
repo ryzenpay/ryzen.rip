@@ -12,10 +12,15 @@ ex: wget --progress=bar:force -O /tmp/<filename>.deb <link>
 ex: sudo dpkg -i /tmp/<filename>.deb
 
 ##nginx
+nginx opensource needed: https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-open-source/
+
 to make nginx show directory in browser, add the following in the location block:
 `        autoindex on;`
 to make the files show in browser rather than prompting to download, add the following to the location block:
 `add_header Content-Type text/plain;`
+
+auto index theme:
+https://github.com/gibatronic/ngx-superbindex
 
 ##sync script
 the sync script `sync` is the same script ran on my server to keep content on the server up to date with the github
