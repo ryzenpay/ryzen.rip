@@ -10,3 +10,6 @@ ex: wget --progress=bar:force -O /tmp/<filename>.deb <link>
 
 3. install
 ex: sudo dpkg -i /tmp/<filename>.deb
+
+to make nginx show directory in browser, add the following in the location block:
+        autoindex on;
