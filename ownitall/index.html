@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Display - ryzen.rip</title>
+    <title>OwnItAll - ryzen.rip</title>
     <style>
         body {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 100vh;
@@ -17,13 +18,19 @@
             font-size: 24px;
             text-decoration: none;
             color: #0366d6;
+            margin-bottom: 20px;
         }
         a:hover {
             text-decoration: underline;
         }
+        hr {
+            width: 80%;
+            margin: 20px 0;
+        }
         #codeDisplay {
             font-size: 24px;
             margin-bottom: 20px;
+            text-align: center;
         }
         #copyButton {
             padding: 10px 20px;
@@ -34,7 +41,7 @@
 </head>
 <body>
     <a href="https://github.com/ryzenpay/ownitall" target="_blank">View OwnItAll on GitHub</a>
-    <br><hr><br>
+    <hr>
     <div id="codeDisplay"></div>
     <button id="copyButton">Copy Code</button>
 
