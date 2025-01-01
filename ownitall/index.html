@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OwnItAll - ryzen.rip</title>
+    <title>Code Display - ryzen.rip</title>
     <style>
         body {
             display: flex;
@@ -21,9 +21,40 @@
         a:hover {
             text-decoration: underline;
         }
+        #codeDisplay {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        #copyButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
     <a href="https://github.com/ryzenpay/ownitall" target="_blank">View OwnItAll on GitHub</a>
+    <br><hr><br>
+    <div id="codeDisplay"></div>
+    <button id="copyButton">Copy Code</button>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const codeDisplay = document.getElementById('codeDisplay');
+        const copyButton = document.getElementById('copyButton');
+
+        if (code) {
+            codeDisplay.textContent = code;
+        } else {
+            codeDisplay.textContent = 'No code provided';
+        }
+
+        copyButton.addEventListener('click', () => {
+            navigator.clipboard.writeText(code).then(() => {
+                alert('Code copied to clipboard!');
+            });
+        });
+    </script>
 </body>
 </html>
