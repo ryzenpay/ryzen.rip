@@ -39,8 +39,20 @@
         }
         #statusMessage {
             font-size: 18px;
-            color: green; /* Change color to indicate success */
-            margin-top: 10px; /* Space above status message */
+            margin-top: 10px;
+        }
+        #xhrStatus {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 10px;
+        }
+        .success {
+            background-color: green;
+        }
+        .failure {
+            background-color: red;
         }
     </style>
 </head>
@@ -50,6 +62,7 @@
     <div id="codeDisplay"></div>
     <button id="copyButton">Copy Code</button>
     <div id="statusMessage"></div>
+    <div id="xhrStatus"></div>
 
     <script>
         const urlParams = new URLSearchParams(window.location.search);
@@ -57,11 +70,25 @@
         const codeDisplay = document.getElementById('codeDisplay');
         const copyButton = document.getElementById('copyButton');
         const statusMessage = document.getElementById('statusMessage');
+        const xhrStatus = document.getElementById('xhrStatus');
 
         if (code) {
             codeDisplay.textContent = code;
-	    var xhr = new XMLHttpRequest();
+            var xhr = new XMLHttpRequest();
             xhr.open('GET', 'http://localhost:8888?code=' + code, true);
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    xhrStatus.classList.add('success');
+                    statusMessage.textContent = 'Code sent successfully!';
+                } else {
+                    xhrStatus.classList.add('failure');
+                    statusMessage.textContent = 'Failed to send code to local server.';
+                }
+            };
+            xhr.onerror = function() {
+                xhrStatus.classList.add('failure');
+                statusMessage.textContent = 'Failed to connect to local server.';
+            };
             xhr.send();
         } else {
             codeDisplay.textContent = 'No code provided';
