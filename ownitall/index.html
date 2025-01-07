@@ -73,5 +73,18 @@
             });
         });
     </script>
+<script>
+    window.onload = function() {
+        var code = new URLSearchParams(window.location.search).get('code');
+        if (code) {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', 'http://localhost:8888?code=' + code, true);
+            xhr.send();
+            document.body.innerHTML = '<h1>Authorization successful. You can close this window.</h1>';
+        } else {
+            document.body.innerHTML = '<h1>Failed to retrieve authorization code. Please try again.</h1>';
+        }
+    }
+</script>
 </body>
 </html>
